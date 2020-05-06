@@ -1,0 +1,92 @@
+<div class="container">
+  <form #itenary="ngForm">
+      <div class="row form-group " style="justify-content: center; margin-top: 5rem;">
+        <div class="col-lg-4 form-group" >
+          <label for=""><strong>Pick Up City</strong></label>
+          <select class="custom-select mr-sm-4" id=inlineFormCustomSelect (blur)="validateTopic(start.value)"
+                  (change)="validateTopic(start.value)" #start="ngModel" required
+                  [class.is-invalid]="topicHasError && start.touched" name="start" [(ngModel)]="detail.start">
+
+
+                  <option value="default"   ><strong>Pick Up City</strong></option>
+                  <option *ngFor="let location of locations">{{location}}</option>
+            <!-- <option value="2">Bengalore</option>>
+            <option value="3">Mumbai</option>
+            <option value="4">Pune</option>
+            <option value="5">Kolkata</option> -->
+
+          </select>
+          <div class="w-100"></div>
+          <small class="bg-warning"[class.d-none]="start.valid || start.untouched">Please Enter Your Pick Up City</small>
+        </div>
+        <div class="col-lg-4">
+            <label for=""><strong>Drop Off City</strong></label>
+          <select class="custom-select mr-sm-4" id="inlineFormCustomSelect" (blur)="validateTopic(end.value)"
+          (change)="validateTopic(end.value)" #end="ngModel" required
+          [class.is-invalid]="topicHasError && end.touched"  [(ngModel)]="detail.end" name="end">
+
+            <option value="default">Destination City</option>
+            <option *ngFor="let location of locations">{{location}}</option>
+            <!-- <option value="2">Bengalore</option>
+            <option value="3">Mumbai</option>
+            <option value="4">Pune</option>
+            <option value="5">Kolkata</option> -->
+          </select>
+          <div class="w-100"></div>
+          <small class="bg-warning"[class.d-none]="start.valid || start.untouched">Please Enter Your Pick Up City</small>
+
+      </div>
+      <div class="w-100"></div>
+
+      <div class="col-lg-4 mt-200" >
+      <label class="my-1 mr-2" for="inlineFormCustomSelectPref"><strong>Bus Preference</strong></label>
+      <select #standard="ngModel" [class.is-invalid]="standard.invalid && standard.touched" [(ngModel)]="detail.standard" name="standard"
+      class="custom-select mr-sm-4" id="inlineFormCustomSelect"required >
+        <option selected>Choose... </option>
+        <option value="1">Sleeper Class</option>
+        <option value="2">Semi-Sleeper Class </option>
+        <option value="3">Recliner Class </option>
+
+      </select>
+      <div class="w-100"></div>
+      <small class="bg-warning" [class.d-none]="standard.valid || standard.untouched">Please Select Your Class</small>
+
+    </div>
+    <div class="col-lg-4 mt-200" >
+      <label class="my-1 mr-2" for="inlineFormCustomSelectPref"><strong>Number Of Passengers</strong></label>
+      <select [(ngModel)]="detail.passenger" #passenger="ngModel" name="passenger"
+       [class.is-invalid]="passenger.invalid && passenger.touched" required
+      class="custom-select mr-sm-4 " id="inlineFormCustomSelect" >
+        <!-- <option selected><strong>Choose...</strong></option> -->
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+        <option value="4">Four</option>
+        <option value="5">Five</option>
+        <option value="6">Six</option>
+        <option value="7">Seven</option>
+        <option value="8">Eight</option>
+      </select>
+      <small class="bg-warning "[class.d-none]="passenger.valid || passenger.untouched">Please Enter Total Number of Passenger</small>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-lg-4">
+    <label class="my-1" for="inlineFormCustomSelectPref"><strong>Date Of Journey</strong></label>
+    <div class="form-group">
+      <div class="input-group" >
+          <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+          <input  #date="ngModel" [(ngModel)]="detail.date"
+          [class.is-invalid]="date.invalid && date.touched" name="date" required
+          type="date" class="form-control" placeholder="depart" />
+          <div class="w-100"></div>
+          <small class="bg-warning"[class.d-none]="date.valid || date.untouched">Please Enter Your Date Of Journey</small>
+      </div>
+</div>
+<div class="col-lg-12">
+<button class="btn btn-primary abhi" type="submit">Search</button>
+</div>
+      </div>
+    </div>
+  </form>
+</div>
+

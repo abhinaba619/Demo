@@ -1,0 +1,66 @@
+<div class="row pt-5">
+  <div class="col-md-5 mx-auto">
+    <div class="card rounder-0">
+      <div class="card-header">
+        <h3 class="mb-0">Register</h3>
+      </div>
+      <div class="card-body">
+        <form class="form" #registerData="ngForm">
+          <div class="form-group">
+            <label  for="">Full Name</label>
+            <input  #name="ngModel" [class.is-invalid]="name.invalid && name.touched
+            "[(ngModel)]="registerUserData.name"  name="name" type="text" class="form-control rounded-0" required>
+            <small  class="text-danger"[class.d-none]="name.valid|| name.untouched" >Please Enter Your name...</small>
+          </div>
+
+          <div class="form-group">
+            <label  for="">Email</label>
+            <input  #email="ngModel" [class.is-invalid]="email.invalid && email.touched"
+            pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+            [(ngModel)]="registerUserData.email"  name="email "type="text" class="form-control rounded-0" required>
+            <small  class="text-danger"[class.d-none]="email.valid|| email.untouched" >Please Enter A valid Email Address...</small>
+          </div>
+
+
+          <div class="form-froup">
+            <label for="">Password</label>
+            <input  #password="ngModel" [class.is-invalid]="password.invalid && password.touched"
+            pattern="^[a-zA-Z0-9]{8,}$"
+            [(ngModel)]="registerUserData.password"
+            name="password" type="Password"
+            class="form-control rounded-0"   required >
+            <small  class="text-danger" [class.d-none]="password.valid || password.untouched" >Minimum Length Should be 8...</small>
+          </div>
+
+
+
+          <!-- <div class="form-group">
+            <label  for="">Contact</label>
+            <input  #contact="ngModel" [class.is-invalid]="contact.invalid && contact.touched"
+            [(ngModel)]="registerUserData.contact"  name="contact" type="tel" class="form-control rounded-0"
+            pattern="^\d{10}$" required>
+            <small class="text-danger"[class.d-none]="contact.valid ||contact.untouched">Please Enter a Valid Contact Number</small> -->
+          <!-- </div> -->
+
+            <div class="form-group">
+              <label>Phone Number</label>
+
+              <input #contact="ngModel" [(ngModel)]='registerUserData.contact'  [class.is-invalid]='contact.invalid &&
+              contact.touched' class="form-control" name="contact" required type="tel">
+
+              <div *ngIf="contact.errors && (contact.invalid || contact.touched)">
+                  <small *ngIf="(registerUserData.contact).length === 0 && contact.touched" class='text-success'>Phone number required</small>
+                  <small *ngIf="((registerUserData.contact).length > 0 && (registerUserData.contact).length != 10) && contact.touched" class='text-success'>Phone number is not 10 Digits</small>
+              </div>
+
+
+          </div>
+          <!-- {{}} -->
+          {{(registerUserData.contact).length}}
+
+          <button (click)="registerUser()"  type= "button"  class="btn btn-primary float-right mt-2">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

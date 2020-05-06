@@ -1,0 +1,29 @@
+<div class="row pt-5">
+  <div class="col-md-5 mx-auto">
+    <div class="card rounder-0">
+      <div class="card-header">
+        <h3 class="mb-0 bg-transparent">Login</h3>
+      </div>
+      <div class="card-body">
+        <form class="form" #loginData="ngForm">
+
+          <div class="form-group ">
+            <label  for="">email</label>
+            <input #email="ngModel"  [class.is-invalid]="email.invalid && email.touched" [(ngModel)]="loginUserData.email"
+            name="email "type="text" class="form-control rounded-0" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+            >
+            <small class="text-danger" [class.d-none]="email.valid || email.untouched">Please Provide a Valid Email Address</small>
+          </div>
+          <div class="form-froup">
+            <label for="">Password</label>
+            <input  #password="ngModel" [class.is-invalid]="password.invalid && password.touched" [(ngModel)]="loginUserData.password"
+            name="password" pattern="(?=.{7,})" type="Password" class="form-control rounded-0" required>
+            <small  class="text-danger" [class.d-none]="password.valid || password.untouched">Minimum Length Should Be 7</small>
+          </div>
+
+          <button (click)="loginUser() "  type= "button"  class="btn btn-primary float-right mt-2">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

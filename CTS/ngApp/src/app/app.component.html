@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="container-fluid">
+    <div class=" big-banner" style="height: 650px; padding-top: 10px;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+      <a class="navbar-brand" href="#"><strong>OneStop.com</strong></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/events" routerLinkActive="active"><strong>Home</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/special" routerLinkActive="active"><strong>Members</strong></a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+            <a class="nav-link "  *ngIf="!authorisation.loggedIn()" routerLink="/login" routerLinkActive="active"><strong>Login</strong></a>
+            <a class="nav-link "  *ngIf="!authorisation.loggedIn()" routerLink="/register" routerLinkActive="active"><strong>Register</strong></a>
+            <a class="nav-link " style="cursor:pointer" *ngIf="authorisation.loggedIn()" (click)="authorisation.logoutUser()"><strong>Logout</strong></a>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+    </div>
+    <!-- </div> --></div>
+
+</body>
+</html>
